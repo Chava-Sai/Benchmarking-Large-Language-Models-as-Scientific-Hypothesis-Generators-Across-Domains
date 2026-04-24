@@ -1,0 +1,377 @@
+[
+  {
+    "model": "claude_sonnet",
+    "factual_exact_match": 0.0,
+    "factual_token_f1": 0.0,
+    "factual_rouge_l": 0.0,
+    "novelty_mean": 0.2426981,
+    "novelty_std": 0.07841325899610346,
+    "novelty_n": 1000,
+    "plausibility_mean": 0.0,
+    "plausibility_std": 0.0,
+    "plausibility_scientific_validity": 0.0,
+    "plausibility_testability": 0.0,
+    "plausibility_specificity": 0.0,
+    "plausibility_novelty_claimed": 0.0,
+    "composite_score": 0.009944334999999999,
+    "by_domain": {
+      "biomedical": {
+        "novelty_mean": 0.24202866666666664,
+        "plausibility_mean": 0.0
+      },
+      "physics": {
+        "novelty_mean": 0.24125942947702061,
+        "plausibility_mean": 0.0
+      },
+      "biology": {
+        "novelty_mean": 0.23854358974358975,
+        "plausibility_mean": 0.0
+      },
+      "computer_science": {
+        "novelty_mean": 0.31581176470588235,
+        "plausibility_mean": 0.0
+      },
+      "chemistry": {
+        "novelty_mean": 0.2448307692307692,
+        "plausibility_mean": 0.0
+      }
+    },
+    "short_name": "Claude-Sonnet-4.6"
+  },
+  {
+    "model": "gpt4o_mini",
+    "factual_exact_match": 0.623,
+    "factual_token_f1": 0.7620796184638521,
+    "factual_rouge_l": 0.7602906138397704,
+    "factual_n": 1000,
+    "factual_by_domain": {
+      "general_science": {
+        "exact_match": 0.623,
+        "token_f1": 0.7620796184638521,
+        "rouge_l": 0.7602906138397704,
+        "n": 1000
+      }
+    },
+    "novelty_mean": 0.21083670000000002,
+    "novelty_std": 0.07831330438124802,
+    "novelty_n": 1000,
+    "plausibility_mean": 0.0,
+    "plausibility_std": 0.0,
+    "plausibility_scientific_validity": 0.0,
+    "plausibility_testability": 0.0,
+    "plausibility_specificity": 0.0,
+    "plausibility_novelty_claimed": 0.0,
+    "composite_score": 0.2655207114623482,
+    "by_domain": {
+      "biomedical": {
+        "novelty_mean": 0.21058866666666665,
+        "plausibility_mean": 0.0
+      },
+      "physics": {
+        "novelty_mean": 0.20604041204437404,
+        "plausibility_mean": 0.0
+      },
+      "biology": {
+        "novelty_mean": 0.23824102564102562,
+        "plausibility_mean": 0.0
+      },
+      "computer_science": {
+        "novelty_mean": 0.31525882352941176,
+        "plausibility_mean": 0.0
+      },
+      "chemistry": {
+        "novelty_mean": 0.23059999999999994,
+        "plausibility_mean": 0.0
+      }
+    },
+    "short_name": "GPT-4o-mini"
+  },
+  {
+    "model": "llama3_70b",
+    "factual_exact_match": 0.723,
+    "factual_token_f1": 0.8363782836444601,
+    "factual_rouge_l": 0.8245608507505567,
+    "factual_n": 1000,
+    "factual_by_domain": {
+      "general_science": {
+        "exact_match": 0.723,
+        "token_f1": 0.8363782836444601,
+        "rouge_l": 0.8245608507505567,
+        "n": 1000
+      }
+    },
+    "novelty_mean": 0.22970980000000002,
+    "novelty_std": 0.08090552196210096,
+    "novelty_n": 1000,
+    "plausibility_mean": 0.0,
+    "plausibility_std": 0.0,
+    "plausibility_scientific_validity": 0.0,
+    "plausibility_testability": 0.0,
+    "plausibility_specificity": 0.0,
+    "plausibility_novelty_claimed": 0.0,
+    "composite_score": 0.298130829275561,
+    "by_domain": {
+      "biomedical": {
+        "novelty_mean": 0.22400800000000004,
+        "plausibility_mean": 0.0
+      },
+      "physics": {
+        "novelty_mean": 0.22885863708399365,
+        "plausibility_mean": 0.0
+      },
+      "biology": {
+        "novelty_mean": 0.24560000000000004,
+        "plausibility_mean": 0.0
+      },
+      "computer_science": {
+        "novelty_mean": 0.3125235294117647,
+        "plausibility_mean": 0.0
+      },
+      "chemistry": {
+        "novelty_mean": 0.24663846153846153,
+        "plausibility_mean": 0.0
+      }
+    },
+    "short_name": "LLaMA-3.3-70B"
+  },
+  {
+    "model": "qwen2_72b",
+    "factual_exact_match": 0.687,
+    "factual_token_f1": 0.7969112822446246,
+    "factual_rouge_l": 0.7966196677139232,
+    "factual_n": 1000,
+    "factual_by_domain": {
+      "general_science": {
+        "exact_match": 0.687,
+        "token_f1": 0.7969112822446246,
+        "rouge_l": 0.7966196677139232,
+        "n": 1000
+      }
+    },
+    "novelty_mean": 0.2193283,
+    "novelty_std": 0.08475909455102738,
+    "novelty_n": 1000,
+    "plausibility_mean": 0.0,
+    "plausibility_std": 0.0,
+    "plausibility_scientific_validity": 0.0,
+    "plausibility_testability": 0.0,
+    "plausibility_specificity": 0.0,
+    "plausibility_novelty_claimed": 0.0,
+    "composite_score": 0.28068385378561855,
+    "by_domain": {
+      "biomedical": {
+        "novelty_mean": 0.211154,
+        "plausibility_mean": 0.0
+      },
+      "physics": {
+        "novelty_mean": 0.2192445324881141,
+        "plausibility_mean": 0.0
+      },
+      "biology": {
+        "novelty_mean": 0.2503564102564103,
+        "plausibility_mean": 0.0
+      },
+      "computer_science": {
+        "novelty_mean": 0.3034117647058823,
+        "plausibility_mean": 0.0
+      },
+      "chemistry": {
+        "novelty_mean": 0.20899230769230767,
+        "plausibility_mean": 0.0
+      }
+    },
+    "short_name": "Qwen2.5-72B"
+  },
+  {
+    "model": "llama3_8b",
+    "factual_exact_match": 0.563,
+    "factual_token_f1": 0.6760555490403316,
+    "factual_rouge_l": 0.66401359287533,
+    "factual_n": 1000,
+    "factual_by_domain": {
+      "general_science": {
+        "exact_match": 0.563,
+        "token_f1": 0.6760555490403316,
+        "rouge_l": 0.66401359287533,
+        "n": 1000
+      }
+    },
+    "novelty_mean": 0.2376327,
+    "novelty_std": 0.08684228855062491,
+    "novelty_n": 1000,
+    "plausibility_mean": 0.0,
+    "plausibility_std": 0.0,
+    "plausibility_scientific_validity": 0.0,
+    "plausibility_testability": 0.0,
+    "plausibility_specificity": 0.0,
+    "plausibility_novelty_claimed": 0.0,
+    "composite_score": 0.244790887164116,
+    "by_domain": {
+      "biomedical": {
+        "novelty_mean": 0.24324699999999996,
+        "plausibility_mean": 0.0
+      },
+      "physics": {
+        "novelty_mean": 0.2342201267828843,
+        "plausibility_mean": 0.0
+      },
+      "biology": {
+        "novelty_mean": 0.23645384615384615,
+        "plausibility_mean": 0.0
+      },
+      "computer_science": {
+        "novelty_mean": 0.2939235294117647,
+        "plausibility_mean": 0.0
+      },
+      "chemistry": {
+        "novelty_mean": 0.20363846153846155,
+        "plausibility_mean": 0.0
+      }
+    },
+    "short_name": "LLaMA-3.1-8B"
+  },
+  {
+    "model": "mistral_7b",
+    "factual_exact_match": 0.197,
+    "factual_token_f1": 0.37830976022744206,
+    "factual_rouge_l": 0.3775450646681876,
+    "factual_n": 1000,
+    "factual_by_domain": {
+      "general_science": {
+        "exact_match": 0.197,
+        "token_f1": 0.37830976022744206,
+        "rouge_l": 0.3775450646681876,
+        "n": 1000
+      }
+    },
+    "novelty_mean": 0.16956749999999998,
+    "novelty_std": 0.07213754399582785,
+    "novelty_n": 1000,
+    "plausibility_mean": 0.0,
+    "plausibility_std": 0.0,
+    "plausibility_scientific_validity": 0.0,
+    "plausibility_testability": 0.0,
+    "plausibility_specificity": 0.0,
+    "plausibility_novelty_claimed": 0.0,
+    "composite_score": 0.1167570410796047,
+    "by_domain": {
+      "biomedical": {
+        "novelty_mean": 0.16215766666666667,
+        "plausibility_mean": 0.0
+      },
+      "physics": {
+        "novelty_mean": 0.1699849445324881,
+        "plausibility_mean": 0.0
+      },
+      "biology": {
+        "novelty_mean": 0.18984871794871794,
+        "plausibility_mean": 0.0
+      },
+      "computer_science": {
+        "novelty_mean": 0.23805294117647058,
+        "plausibility_mean": 0.0
+      },
+      "chemistry": {
+        "novelty_mean": 0.1699,
+        "plausibility_mean": 0.0
+      }
+    },
+    "short_name": "Mistral-7B"
+  },
+  {
+    "model": "qwen2_7b",
+    "factual_exact_match": 0.586,
+    "factual_token_f1": 0.7129722154099766,
+    "factual_rouge_l": 0.7175348546518969,
+    "factual_n": 1000,
+    "factual_by_domain": {
+      "general_science": {
+        "exact_match": 0.586,
+        "token_f1": 0.7129722154099766,
+        "rouge_l": 0.7175348546518969,
+        "n": 1000
+      }
+    },
+    "novelty_mean": 0.1902278,
+    "novelty_std": 0.08008845464335043,
+    "novelty_n": 1000,
+    "plausibility_mean": 0.0,
+    "plausibility_std": 0.0,
+    "plausibility_scientific_validity": 0.0,
+    "plausibility_testability": 0.0,
+    "plausibility_specificity": 0.0,
+    "plausibility_novelty_claimed": 0.0,
+    "composite_score": 0.24112000539349177,
+    "by_domain": {
+      "biomedical": {
+        "novelty_mean": 0.183175,
+        "plausibility_mean": 0.0
+      },
+      "physics": {
+        "novelty_mean": 0.191216323296355,
+        "plausibility_mean": 0.0
+      },
+      "biology": {
+        "novelty_mean": 0.20550256410256415,
+        "plausibility_mean": 0.0
+      },
+      "computer_science": {
+        "novelty_mean": 0.2508,
+        "plausibility_mean": 0.0
+      },
+      "chemistry": {
+        "novelty_mean": 0.17996923076923077,
+        "plausibility_mean": 0.0
+      }
+    },
+    "short_name": "Qwen2.5-7B"
+  },
+  {
+    "model": "llama3_8b_finetuned",
+    "factual_exact_match": 0.319,
+    "factual_token_f1": 0.41901703326817813,
+    "factual_rouge_l": 0.42495660602975555,
+    "factual_n": 1000,
+    "factual_by_domain": {
+      "general_science": {
+        "exact_match": 0.319,
+        "token_f1": 0.41901703326817813,
+        "rouge_l": 0.42495660602975555,
+        "n": 1000
+      }
+    },
+    "novelty_mean": 0.370121,
+    "novelty_std": 0.13122660522546487,
+    "novelty_n": 1000,
+    "plausibility_mean": 0.0,
+    "plausibility_std": 0.0,
+    "plausibility_scientific_validity": 0.0,
+    "plausibility_testability": 0.0,
+    "plausibility_specificity": 0.0,
+    "plausibility_novelty_claimed": 0.0,
+    "composite_score": 0.20119831164386232,
+    "by_domain": {
+      "biomedical": {
+        "novelty_mean": 0.3471053333333333,
+        "plausibility_mean": 0.0
+      },
+      "physics": {
+        "novelty_mean": 0.37987638668779716,
+        "plausibility_mean": 0.0
+      },
+      "biology": {
+        "novelty_mean": 0.3562717948717949,
+        "plausibility_mean": 0.0
+      },
+      "computer_science": {
+        "novelty_mean": 0.4290882352941177,
+        "plausibility_mean": 0.0
+      },
+      "chemistry": {
+        "novelty_mean": 0.3921769230769231,
+        "plausibility_mean": 0.0
+      }
+    },
+    "short_name": "LLaMA-3.1-8B-FT"
+  }
+]

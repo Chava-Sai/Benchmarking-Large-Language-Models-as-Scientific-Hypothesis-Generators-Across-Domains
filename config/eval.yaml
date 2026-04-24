@@ -1,0 +1,57 @@
+evaluation:
+  # --- Factual Grounding ---
+  factual:
+    enabled: true
+    datasets: ["sciq", "pubmedqa"]
+    metrics:
+      - exact_match
+      - f1_overlap
+      - rouge_l
+    normalize_answers: true
+
+  # --- Novelty Score ---
+  novelty:
+    enabled: true
+    embedding_model: "sentence-transformers/all-mpnet-base-v2"
+    embedding_model_fallback: "sentence-transformers/all-MiniLM-L6-v2"
+    faiss_index_type: "IVFFlat"    # fast approximate search
+    faiss_nprobe: 32
+    # novelty = 1 - cosine_similarity(hypothesis, most_similar_in_corpus)
+    # corpus = source abstracts + arXiv reference set
+    reference_corpus_size: 50000
+    batch_size: 512
+    device: "cuda"
+
+  # --- Plausibility (LLM-as-judge) ---
+  plausibility:
+    enabled: true
+    judge_model: "meta-llama/Meta-Llama-3.1-70B-Instruct"
+    # fallback to GPT-4o-mini if no budget
+    judge_model_fallback: "gpt-4o-mini"
+    scale: 5         # 1-5 Likert scale
+    aspects:
+      - scientific_validity    # Is the hypothesis scientifically coherent?
+      - testability            # Could it be empirically tested?
+      - specificity            # Is it specific enough to be meaningful?
+      - novelty_claimed        # Does it go beyond the abstract?
+    n_samples_human: 100       # for human eval subset
+    batch_size: 32
+
+  # --- Cross-domain analysis ---
+  cross_domain:
+    enabled: true
+    domains: ["biology", "chemistry", "physics", "computer_science", "general"]
+    domain_field: "category"
+
+  # --- Aggregate ---
+  aggregate_weights:
+    factual: 0.35
+    novelty: 0.35
+    plausibility: 0.30
+
+output:
+  results_dir: "results/metrics"
+  hypotheses_dir: "results/hypotheses"
+  figures_dir: "results/figures"
+  save_raw_outputs: true
+  save_embeddings: true

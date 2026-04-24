@@ -1,0 +1,39 @@
+{
+  "model": "claude_sonnet",
+  "factual_exact_match": 0.0,
+  "factual_token_f1": 0.0,
+  "factual_rouge_l": 0.0,
+  "novelty_mean": 0.2426981,
+  "novelty_std": 0.07841325899610346,
+  "novelty_n": 1000,
+  "plausibility_mean": 0.0,
+  "plausibility_std": 0.0,
+  "plausibility_scientific_validity": 0.0,
+  "plausibility_testability": 0.0,
+  "plausibility_specificity": 0.0,
+  "plausibility_novelty_claimed": 0.0,
+  "composite_score": 0.009944334999999999,
+  "by_domain": {
+    "biomedical": {
+      "novelty_mean": 0.24202866666666664,
+      "plausibility_mean": 0.0
+    },
+    "physics": {
+      "novelty_mean": 0.24125942947702061,
+      "plausibility_mean": 0.0
+    },
+    "biology": {
+      "novelty_mean": 0.23854358974358975,
+      "plausibility_mean": 0.0
+    },
+    "computer_science": {
+      "novelty_mean": 0.31581176470588235,
+      "plausibility_mean": 0.0
+    },
+    "chemistry": {
+      "novelty_mean": 0.2448307692307692,
+      "plausibility_mean": 0.0
+    }
+  },
+  "short_name": "Claude-Sonnet-4.6"
+}

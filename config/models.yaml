@@ -1,0 +1,121 @@
+# ============================================================
+# Model Registry
+# H200 has 96GB VRAM.
+# - 70B/72B run via AWQ 4-bit quantization (~40GB)
+# - 7-8B run in bf16 (~16GB)
+# - API models use provider SDKs (no GPU needed)
+# ============================================================
+
+models:
+  # --- API Models (strongest baselines) ---
+
+  claude_sonnet:
+    name: "claude-sonnet-4-6"
+    short_name: "Claude-Sonnet-4.6"
+    type: "api"
+    api_provider: "anthropic"
+    enabled: true
+    max_tokens: 512
+
+  gpt4o_mini:
+    name: "gpt-4o-mini"
+    short_name: "GPT-4o-mini"
+    type: "api"
+    api_provider: "openai"
+    enabled: true
+    max_tokens: 512
+
+  # --- Large Local Models (70B class, AWQ 4-bit) ---
+
+  llama3_70b:
+    name: "casperhansen/llama-3.3-70b-instruct-awq"
+    short_name: "LLaMA-3.3-70B"
+    type: "local"
+    family: "llama"
+    params_b: 70
+    dtype: "float16"
+    quantization: "awq"
+    max_model_len: 8192
+    gpu_memory_utilization: 0.88
+    tensor_parallel_size: 1
+    enabled: true
+
+  qwen2_72b:
+    name: "Qwen/Qwen2.5-72B-Instruct-AWQ"
+    short_name: "Qwen2.5-72B"
+    type: "local"
+    family: "qwen"
+    params_b: 72
+    dtype: "float16"
+    quantization: "awq"
+    max_model_len: 8192
+    gpu_memory_utilization: 0.88
+    tensor_parallel_size: 1
+    enabled: true
+
+  # --- Small Local Models (7-8B class, bf16) ---
+
+  llama3_8b:
+    name: "meta-llama/Meta-Llama-3.1-8B-Instruct"
+    short_name: "LLaMA-3.1-8B"
+    type: "local"
+    family: "llama"
+    params_b: 8
+    dtype: "bfloat16"
+    quantization: null
+    max_model_len: 8192
+    gpu_memory_utilization: 0.45
+    tensor_parallel_size: 1
+    enabled: true
+
+  mistral_7b:
+    name: "mistralai/Mistral-7B-Instruct-v0.3"
+    short_name: "Mistral-7B"
+    type: "local"
+    family: "mistral"
+    params_b: 7
+    dtype: "bfloat16"
+    quantization: null
+    max_model_len: 8192
+    gpu_memory_utilization: 0.40
+    tensor_parallel_size: 1
+    enabled: true
+
+  qwen2_7b:
+    name: "Qwen/Qwen2.5-7B-Instruct"
+    short_name: "Qwen2.5-7B"
+    type: "local"
+    family: "qwen"
+    params_b: 7
+    dtype: "bfloat16"
+    quantization: null
+    max_model_len: 8192
+    gpu_memory_utilization: 0.40
+    tensor_parallel_size: 1
+    enabled: true
+
+  # --- Our Fine-tuned Model (enabled after training) ---
+
+  llama3_8b_finetuned:
+    name: "./checkpoints/llama3-8b-hypothesis"
+    short_name: "LLaMA-3.1-8B-FT"
+    type: "local"
+    family: "llama"
+    params_b: 8
+    dtype: "bfloat16"
+    quantization: null
+    max_model_len: 8192
+    gpu_memory_utilization: 0.45
+    tensor_parallel_size: 1
+    enabled: true
+
+generation:
+  temperature: 0.7
+  top_p: 0.9
+  max_new_tokens: 256
+  repetition_penalty: 1.1
+
+  greedy:
+    temperature: 0.0
+    top_p: 1.0
+    max_new_tokens: 256

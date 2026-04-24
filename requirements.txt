@@ -1,0 +1,43 @@
+# Core ML
+torch>=2.3.0
+transformers>=4.45.0
+accelerate>=0.34.0
+peft>=0.13.0
+trl>=0.11.0
+bitsandbytes>=0.44.0
+
+# Fast inference
+vllm>=0.6.0
+
+# Datasets
+datasets>=3.0.0
+huggingface_hub>=0.25.0
+
+# Embeddings & similarity
+sentence-transformers>=3.2.0
+# faiss installed via conda: conda install -c conda-forge faiss-gpu
+
+# Evaluation
+rouge-score>=0.1.2
+nltk>=3.9.0
+scikit-learn>=1.5.0
+scipy>=1.14.0
+bert-score>=0.3.13
+
+# Analysis & visualization
+numpy>=1.26.0
+pandas>=2.2.0
+matplotlib>=3.9.0
+seaborn>=0.13.0
+plotly>=5.24.0
+
+# Experiment tracking
+wandb>=0.18.0
+
+# Utilities
+tqdm>=4.66.0
+pyyaml>=6.0.2
+python-dotenv>=1.0.1
+jsonlines>=4.0.0
+fire>=0.6.0
+rich>=13.8.0

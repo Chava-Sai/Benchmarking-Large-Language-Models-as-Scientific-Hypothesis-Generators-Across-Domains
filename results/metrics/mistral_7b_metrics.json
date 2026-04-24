@@ -1,0 +1,48 @@
+{
+  "model": "mistral_7b",
+  "factual_exact_match": 0.197,
+  "factual_token_f1": 0.37830976022744206,
+  "factual_rouge_l": 0.3775450646681876,
+  "factual_n": 1000,
+  "factual_by_domain": {
+    "general_science": {
+      "exact_match": 0.197,
+      "token_f1": 0.37830976022744206,
+      "rouge_l": 0.3775450646681876,
+      "n": 1000
+    }
+  },
+  "novelty_mean": 0.16956749999999998,
+  "novelty_std": 0.07213754399582785,
+  "novelty_n": 1000,
+  "plausibility_mean": 0.0,
+  "plausibility_std": 0.0,
+  "plausibility_scientific_validity": 0.0,
+  "plausibility_testability": 0.0,
+  "plausibility_specificity": 0.0,
+  "plausibility_novelty_claimed": 0.0,
+  "composite_score": 0.1167570410796047,
+  "by_domain": {
+    "biomedical": {
+      "novelty_mean": 0.16215766666666667,
+      "plausibility_mean": 0.0
+    },
+    "physics": {
+      "novelty_mean": 0.1699849445324881,
+      "plausibility_mean": 0.0
+    },
+    "biology": {
+      "novelty_mean": 0.18984871794871794,
+      "plausibility_mean": 0.0
+    },
+    "computer_science": {
+      "novelty_mean": 0.23805294117647058,
+      "plausibility_mean": 0.0
+    },
+    "chemistry": {
+      "novelty_mean": 0.1699,
+      "plausibility_mean": 0.0
+    }
+  },
+  "short_name": "Mistral-7B"
+}

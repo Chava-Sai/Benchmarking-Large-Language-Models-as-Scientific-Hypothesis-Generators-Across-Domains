@@ -1,0 +1,79 @@
+datasets:
+  sciq:
+    hf_name: "allenai/sciq"
+    split: "test"
+    task: "factual_qa"
+    domain: "general_science"
+    n_samples: 1000
+    answer_field: "correct_answer"
+    question_field: "question"
+    support_field: "support"
+
+  scieval:
+    hf_name: "OpenDFM/SciEval"
+    split: "test"
+    task: "factual_qa"
+    domain: "multi_domain"
+    n_samples: 500
+    subsets: ["biology", "chemistry", "physics"]
+    answer_field: "answer"
+    question_field: "question"
+
+  scibench:
+    hf_name: "xw27/scibench"
+    split: "test"
+    task: "factual_qa"
+    domain: "stem"
+    n_samples: 500
+    answer_field: "answer_number"
+    question_field: "problem_text"
+
+  pubmedqa:
+    hf_name: "qiaojin/PubMedQA"
+    hf_config: "pqa_labeled"
+    split: "train"
+    task: "hypothesis_generation"
+    domain: "biomedical"
+    n_samples: 500
+    abstract_field: "context"
+    question_field: "question"
+    answer_field: "long_answer"
+
+  arxiv_abstracts:
+    hf_name: "gfissore/arxiv-abstracts-2021"
+    split: "train"
+    task: "hypothesis_generation"
+    domain: "multi_domain"
+    n_samples: 2000
+    abstract_field: "abstract"
+    title_field: "title"
+    # domains to sample from
+    categories:
+      - "cs.AI"
+      - "cs.LG"
+      - "q-bio"
+      - "physics"
+      - "cond-mat"
+
+finetune_data:
+  source: "arxiv_abstracts"
+  hypothesis_keywords:
+    - "we hypothesize"
+    - "our hypothesis"
+    - "we conjecture"
+    - "we propose that"
+    - "we suggest that"
+    - "we theorize"
+    - "our central hypothesis"
+    - "our main hypothesis"
+  n_train: 5000
+  n_val: 500
+  min_abstract_len: 100
+  min_hypothesis_len: 30
+  max_hypothesis_len: 200
+
+paths:
+  raw: "data/raw"
+  processed: "data/processed"
+  finetune: "data/finetune"
+  embeddings: "data/embeddings"

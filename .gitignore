@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.eggs/
+dist/
+build/
+.env
+.venv
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data — large raw/processed files
+data/raw/
+data/processed/
+data/finetune/
+data/embeddings/
+
+# Model checkpoints (large, stored on SCC)
+checkpoints/
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# Logs / job output
+logs/
+*.out
+*.err
+
+# Wandb
+wandb/
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/main.log
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+paper/icml2026.zip
+paper/example_paper.*
+paper/algorithm.sty
+paper/algorithmic.sty
+paper/fancyhdr.sty
+paper/icml_numpapers.pdf
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
