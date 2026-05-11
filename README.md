@@ -7,6 +7,22 @@
 
 ---
 
+## Key Results
+
+| Model | Factual F1 ↑ | ROUGE-L ↑ | Novelty ↑ |
+|---|---|---|---|
+| GPT-4o-mini | 0.762 | 0.760 | 0.211 |
+| LLaMA-3.3-70B | **0.836** | **0.825** | 0.230 |
+| Qwen2.5-72B | 0.797 | 0.797 | 0.219 |
+| LLaMA-3.1-8B | 0.676 | 0.664 | 0.238 |
+| Qwen2.5-7B | 0.713 | 0.718 | 0.190 |
+| Mistral-7B | 0.378 | 0.378 | 0.170 |
+| **LLaMA-3.1-8B-FT** *(ours)* | 0.419 | 0.425 | **0.370** |
+
+Fine-tuning LLaMA-3.1-8B on 5,000 curated hypothesis pairs gives a **+55.5% novelty improvement** at the cost of factual grounding — making the trade-off explicit and quantifiable.
+
+---
+
 ## Installation
 
 ```bash
