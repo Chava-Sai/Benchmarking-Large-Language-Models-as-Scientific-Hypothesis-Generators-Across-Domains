@@ -8,14 +8,14 @@
 #SBATCH --mem=64G
 #SBATCH --time=04:00:00
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=saichava@bu.edu
-#SBATCH -P cs505am
+#SBATCH --mail-user=your@email.com
+
 
 # Compute novelty (FAISS) + plausibility (LLM judge) + aggregate + figures.
 # Run after all hypothesis generation is complete.
 
 set -e
-cd /projectnb/cs505am/students/saichava/icml2026
+cd $(pwd)
 
 module load miniconda/23.11.0
 module load cuda/12.5

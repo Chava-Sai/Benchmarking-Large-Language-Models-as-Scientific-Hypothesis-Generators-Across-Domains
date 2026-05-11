@@ -8,11 +8,11 @@
 #SBATCH --mem=64G
 #SBATCH --time=02:00:00
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=saichava@bu.edu
-#SBATCH -P cs505am
+#SBATCH --mail-user=your@email.com
+
 
 set -e
-cd /projectnb/cs505am/students/saichava/icml2026
+cd $(pwd)
 
 module load miniconda/23.11.0
 module load cuda/12.5

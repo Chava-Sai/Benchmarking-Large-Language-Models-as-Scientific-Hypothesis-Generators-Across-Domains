@@ -1,6 +1,6 @@
 # ============================================================
 # Model Registry
-# H200 has 96GB VRAM.
+# GPU memory requirements:
 # - 70B/72B run via AWQ 4-bit quantization (~40GB)
 # - 7-8B run in bf16 (~16GB)
 # - API models use provider SDKs (no GPU needed)

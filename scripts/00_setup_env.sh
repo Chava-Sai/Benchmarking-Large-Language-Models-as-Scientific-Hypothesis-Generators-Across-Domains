@@ -4,12 +4,12 @@
 
 set -e
 
-PROJECT_DIR="/projectnb/cs505am/students/saichava/icml2026"
+PROJECT_DIR="$(pwd)"
 CONDA_ENV="icml2026"
 
 echo "=== Setting up environment in $PROJECT_DIR ==="
 
-# Load modules available on BU SCC
+# Load modules available on HPC cluster
 module load miniconda/23.11.0
 module load cuda/12.5
 

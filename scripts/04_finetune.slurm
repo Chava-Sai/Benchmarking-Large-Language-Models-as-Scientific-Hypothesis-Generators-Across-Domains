@@ -8,15 +8,15 @@
 #SBATCH --mem=128G
 #SBATCH --time=12:00:00
 #SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=saichava@bu.edu
-#SBATCH -P cs505am
+#SBATCH --mail-user=your@email.com
+
 
 # LoRA fine-tuning of LLaMA-3.1-8B on (abstract, hypothesis) pairs.
-# H200 96GB — runs comfortably in bf16 with Flash Attention 2.
+# Runs in bf16 with Flash Attention 2.
 # Estimated time: ~4-6 hours for 3 epochs on 5000 samples.
 
 set -e
-cd /projectnb/cs505am/students/saichava/icml2026
+cd $(pwd)
 
 module load miniconda/23.11.0
 module load cuda/12.5
