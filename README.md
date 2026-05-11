@@ -1,80 +1,149 @@
-# Can LLMs Generate Scientific Hypotheses? A Benchmark for Autonomous Discovery
+# SciHypo-Bench: Benchmarking LLMs as Scientific Hypothesis Generators
 
-**ICML 2026 AI for Science Workshop** | Seoul, South Korea | Jul 10 2026
+**ICML 2026 AI for Science Workshop** | Seoul, South Korea
 
-## Setup
+> Can large language models generate novel, testable scientific hypotheses?  
+> We benchmark 7 models across biology, chemistry, physics, and CS — and reveal a fundamental **novelty–accuracy trade-off** that scaling alone cannot resolve.
+
+---
+
+## Overview
+
+SciHypo-Bench evaluates LLMs on two complementary axes:
+
+| Metric | What it measures |
+|---|---|
+| **Factual Grounding** (Token F1, ROUGE-L) | Is the hypothesis consistent with the source abstract? |
+| **Embedding Novelty** (FAISS cosine dissimilarity) | How different is it from the existing literature? |
+
+Three prompt strategies are tested per model: **zero-shot**, **few-shot**, and **chain-of-thought**.
+
+---
+
+## Key Results
+
+| Model | Factual F1 ↑ | ROUGE-L ↑ | Novelty ↑ |
+|---|---|---|---|
+| GPT-4o-mini | 0.762 | 0.760 | 0.211 |
+| LLaMA-3.3-70B | **0.836** | **0.825** | 0.230 |
+| Qwen2.5-72B | 0.797 | 0.797 | 0.219 |
+| LLaMA-3.1-8B | 0.676 | 0.664 | 0.238 |
+| Qwen2.5-7B | 0.713 | 0.718 | 0.190 |
+| Mistral-7B | 0.378 | 0.378 | 0.170 |
+| **LLaMA-3.1-8B-FT** *(ours)* | 0.419 | 0.425 | **0.370** |
+
+Fine-tuning LLaMA-3.1-8B on 5,000 curated hypothesis pairs gives a **+55.5% novelty improvement** at the cost of factual grounding — making the trade-off explicit and quantifiable.
+
+---
+
+## Installation
 
 ```bash
-# 1. Clone / copy to SCC
-bash deploy_to_scc.sh YOUR_BU_USERNAME
+git clone https://github.com/Chava-Sai/Benchmarking-Large-Language-Models-as-Scientific-Hypothesis-Generators-Across-Domains.git
+cd Benchmarking-Large-Language-Models-as-Scientific-Hypothesis-Generators-Across-Domains
 
-# 2. On SCC — one-time environment setup
-bash scripts/00_setup_env.sh
-
-# 3. Copy .env.example to .env and fill in tokens
-cp .env.example .env
+pip install -r requirements.txt
+cp .env.example .env   # add your HuggingFace + OpenAI API keys
 ```
 
-## Running the Full Pipeline
+**Requirements:** Python 3.10+, PyTorch 2.1+, ~16GB VRAM for 8B models, ~40GB for 70B (AWQ 4-bit).
+
+---
+
+## Quick Start
 
 ```bash
-# Step 1: Download & preprocess datasets (~2 hrs)
-sbatch scripts/01_download_data.slurm
-
-# Step 2: Hypothesis generation — all 5 models, 3 strategies (~6-7 hrs)
-sbatch scripts/02_generate_hypotheses.slurm
-
-# Step 3: Factual QA evaluation — all models (~3 hrs)
-sbatch scripts/03_factual_eval.slurm
-
-# Step 4: LoRA fine-tuning of LLaMA-3.1-8B (~5 hrs)
-sbatch scripts/04_finetune.slurm
-
-# Step 5: Evaluate fine-tuned model (~2 hrs)
-sbatch scripts/05_eval_finetuned.slurm
-
-# Step 6: Compute metrics + generate figures (~1 hr)
-sbatch scripts/06_metrics_figures.slurm
-```
-
-## Running Locally (quick test)
-
-```bash
+# Run hypothesis generation for one model, one strategy
 python run_pipeline.py --stage generate --models llama3_8b --strategies few_shot
+
+# Compute metrics and generate figures
 python run_pipeline.py --stage metrics --skip_plausibility
 python run_pipeline.py --stage figures
 ```
 
+---
+
+## Full Pipeline
+
+```bash
+# 1. Download and preprocess datasets (SciQ, PubMedQA, arXiv abstracts)
+python data/download_datasets.py
+python data/preprocess.py
+
+# 2. Generate hypotheses — all models × 3 strategies
+python run_pipeline.py --stage generate
+
+# 3. Factual evaluation
+python run_pipeline.py --stage factual
+
+# 4. LoRA fine-tuning of LLaMA-3.1-8B
+python -m src.finetune.train
+
+# 5. Evaluate fine-tuned model
+python run_pipeline.py --stage generate --models llama3_8b_finetuned
+python run_pipeline.py --stage factual --models llama3_8b_finetuned
+
+# 6. Aggregate metrics + produce all paper figures
+python -m analysis.compute_results
+python -m analysis.visualize
+```
+
+---
+
 ## Project Structure
 
 ```
-├── config/          # YAML configs for models, datasets, eval
-├── data/            # Download + preprocessing scripts
+├── config/          # YAML configs (models, datasets, evaluation)
+├── data/            # Dataset download and preprocessing scripts
 ├── src/
-│   ├── models/      # vLLM inference engine + prompt templates
+│   ├── models/      # Inference engine + prompt templates
 │   ├── eval/        # Factual, novelty, plausibility, aggregate metrics
-│   ├── finetune/    # LoRA fine-tuning (dataset + trainer)
+│   ├── finetune/    # LoRA fine-tuning (dataset builder + trainer)
 │   └── utils/       # I/O helpers
-├── analysis/        # Results aggregation + all paper figures
-├── scripts/         # SLURM job scripts (BU SCC H200)
-├── results/         # Generated hypotheses, metrics, figures
-└── run_pipeline.py  # Master runner
+├── analysis/        # Results aggregation and figure generation
+├── paper/           # LaTeX source and compiled PDF
+├── results/
+│   ├── hypotheses/  # Model outputs (all models × strategies)
+│   ├── metrics/     # Aggregated metrics per model
+│   └── figures/     # All paper figures
+└── run_pipeline.py  # Master runner script
 ```
 
-## Models Benchmarked
+---
 
-| Model | Params | Family |
-|---|---|---|
-| LLaMA-3.1-8B-Instruct | 8B | Meta |
-| LLaMA-3.1-70B-Instruct | 70B | Meta |
-| Mistral-7B-Instruct-v0.3 | 7B | Mistral AI |
-| Qwen2.5-7B-Instruct | 7B | Alibaba |
-| Phi-3.5-mini-instruct | 3.8B | Microsoft |
-| **LLaMA-3.1-8B-FT** (ours) | 8B | Fine-tuned |
+## Configuration
 
-## Evaluation Metrics
+Edit `config/models.yaml` to enable/disable models or change generation settings.  
+Edit `config/eval.yaml` to configure embedding model, FAISS index, and novelty settings.
 
-- **Factual Grounding** (Token F1, ROUGE-L) — on SciQ
-- **Novelty Score** (FAISS cosine similarity vs. arXiv corpus)
-- **Plausibility** (LLM-as-judge via LLaMA-3.1-70B, 4 aspects × 1-5 scale)
-- **Composite Score** (weighted average)
+API keys go in `.env`:
+```
+OPENAI_API_KEY=...
+ANTHROPIC_API_KEY=...
+HF_TOKEN=...
+```
+
+---
+
+## Datasets
+
+| Dataset | Domain | Use | N |
+|---|---|---|---|
+| [SciQ](https://allenai.org/data/sciq) | General science | Factual evaluation | 1,000 |
+| [PubMedQA](https://pubmedqa.github.io/) | Biomedical | Hypothesis generation | 500 |
+| arXiv abstracts | Multi-domain | Hypothesis generation + fine-tuning | 6,500 |
+
+---
+
+## Citation
+
+If you find this work useful, please cite:
+
+```bibtex
+@inproceedings{scihypobench2026,
+  title     = {SciHypo-Bench: Benchmarking Large Language Models as Scientific Hypothesis Generators Across Domains},
+  author    = {Anonymous},
+  booktitle = {ICML 2026 Workshop on AI for Science},
+  year      = {2026}
+}
+```
