@@ -26,9 +26,6 @@ Fine-tuning LLaMA-3.1-8B on 5,000 curated hypothesis pairs gives a **+55.5% nove
 ## Installation
 
 ```bash
-git clone https://github.com/Chava-Sai/Benchmarking-Large-Language-Models-as-Scientific-Hypothesis-Generators-Across-Domains.git
-cd Benchmarking-Large-Language-Models-as-Scientific-Hypothesis-Generators-Across-Domains
-
 pip install -r requirements.txt
 cp .env.example .env   # add your HuggingFace + OpenAI API keys
 ```
